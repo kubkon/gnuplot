@@ -78,7 +78,7 @@ instance C Word64 where text = singleton . shows
 instance C Time.Day where
    text d = text $ Time.UTCTime d 0
 instance C Time.UTCTime where
-   text = singleton . showString . Time.formatTime defaultTimeLocale "%s"
+   text = singleton . showString . Time.formatTime defaultTimeLocale "%F %T%Q %z"
 
 
 instance (C a, C b) => C (a,b) where

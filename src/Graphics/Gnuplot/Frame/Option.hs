@@ -37,6 +37,8 @@ module Graphics.Gnuplot.Frame.Option (
    zFormat,
 
    timeFmt,
+
+   datafile,
    ) where
 
 import Graphics.Gnuplot.Private.FrameOption

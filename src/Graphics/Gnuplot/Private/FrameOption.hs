@@ -73,6 +73,8 @@ zFormat :: T; zFormat = Cons "format z" ""
 
 timeFmt :: T; timeFmt = Cons "timefmt" ""
 
+datafile :: T; datafile = Cons "datafile" ""
+
 xData :: T; xData = Cons "xdata" ""
 yData :: T; yData = Cons "ydata" ""
 zData :: T; zData = Cons "zdata" ""

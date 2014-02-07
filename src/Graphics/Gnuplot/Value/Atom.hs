@@ -48,7 +48,14 @@ timeOptions :: OptionSet time
 timeOptions =
    OptionSet ["time"] [quote "%d/%m"] [(Option.timeFmt, [quote "%s"])]
 
+utcOptions :: OptionSet time
+utcOptions =
+   OptionSet ["time"] [quote "%d/%m"] opts
+      where opts = [(Option.datafile, ["separator", quote ","])
+                   ,(Option.timeFmt, [quote "%Y-%m-%d %H:%M:%S"])
+                   ]
+
 instance C Time.Day where
    options = timeOptions
 instance C Time.UTCTime where
-   options = timeOptions
+   options = utcOptions
