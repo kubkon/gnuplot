@@ -122,6 +122,7 @@ Library
     Graphics.Gnuplot.Terminal
     Graphics.Gnuplot.Terminal.Default
     Graphics.Gnuplot.Terminal.PostScript
+    Graphics.Gnuplot.Terminal.PDFCairo
     Graphics.Gnuplot.Terminal.PNG
     Graphics.Gnuplot.Terminal.SVG
     Graphics.Gnuplot.Terminal.WXT
