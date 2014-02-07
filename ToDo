@@ -1,0 +1,49 @@
+currently we only support:
+   * 2d curves
+   * 3d curves
+   * 3d pm3d
+   3d meshes using lines, points etc.
+
+tikz terminal
+
+allow Grahp2D.pointSize modifier only for styles points, linesPoints
+   and maybe others, that support it.
+
+histogram option handling seems to be quite ad-hoc
+
+support legend outside of frame
+
+support for multiple windows/files in one script
+   for files there is no problem
+   How to show the windows simultaneously?
+      set terminal wxt 0
+      set terminal wxt 1
+   With "set terminal pop" you can switch to the default terminal.
+   However, in case of wxt this does not help much,
+      because a new plot replaces the old one.
+      You have to increase window id.
+   For multi-window plot we should require explicit terminals.
+   Maybe we should do "set terminal pop" anyway,
+      in order to flush old settings.
+      Or we install another option diff system.
+
+error messages by gnuplot should be shown in the console
+   but they aren't :-(
+
+Since we switched to files in the /tmp directory
+   the default line titles are rather long.
+   Shall we set a shorter default title?
+   But what shall they show?
+
+combinable size handling within multiplots
+
+Can Atom.OptionsSet have a type parameter in order to make 'options' nicer?
+
+support of binary data formats
+
+make a type class, that allows plotting of functions via a common interface
+   e.g. a->b, [a->b], (a->b, c->d) could all be made instance of this class,
+   but plotting lists or paths would not work this way
+   Can we simple define more instances for Display.C?
+   This won't be so simple,
+   because function types (a->b) need a set of arguments for sampling.
