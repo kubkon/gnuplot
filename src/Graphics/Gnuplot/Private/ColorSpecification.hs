@@ -17,6 +17,6 @@ toString c =
    case c of
       Name name -> "rgbcolor " ++ quote name
       RGB8 r g b ->
-         "rgbcolor #" ++
-         concatMap (padLeft '0' 2 . flip showHex "") [r,g,b]
+         "rgbcolor " ++
+         quote ("#" ++ concatMap (padLeft '0' 2 . flip showHex "") [r,g,b])
       PaletteFrac frac -> "palette frac " ++ show frac
