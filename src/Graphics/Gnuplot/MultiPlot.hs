@@ -1,6 +1,6 @@
 module Graphics.Gnuplot.MultiPlot (
    T,
-   Part,
+   Part(..),
    partFromFrame,
    partFromPlot,
    simpleFromFrameArray,

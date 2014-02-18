@@ -140,6 +140,7 @@ Library
     Graphics.Gnuplot.Graph.ThreeDimensional
     Graphics.Gnuplot.LineSpecification
     Graphics.Gnuplot.ColorSpecification
+    Graphics.Gnuplot.EmbeddedMultiPlot
     Graphics.Gnuplot.MultiPlot
     Graphics.Gnuplot.Value.Atom
     Graphics.Gnuplot.Value.Tuple
