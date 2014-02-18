@@ -3,6 +3,7 @@ module Main where
 import qualified Graphics.Gnuplot.Advanced as GP
 
 import qualified Graphics.Gnuplot.MultiPlot as MultiPlot
+import qualified Graphics.Gnuplot.MultiPlot.Insets as Insets
 
 import qualified Graphics.Gnuplot.Frame as Frame
 import qualified Graphics.Gnuplot.Frame.OptionSet as Opts
@@ -208,6 +209,14 @@ multiplot =
        listArray ((0::Int,0::Int), (2,4)) $
        prefix ++ center : suffix
 
+insetplot :: Insets.T
+insetplot =
+   Insets.title "multiplot with insets" $
+   Insets.simpleFromPartArray 0.25 [(0.7, 0.25)] $
+   Insets.partFromPlot simple2d :
+   Insets.partFromFrame 
+     (Frame.cons (Opts.key False Opts.deflt) simple2d) :
+   []
 
 main :: IO ()
 main = sequence_ $
@@ -226,4 +235,5 @@ main = sequence_ $
    GP.plotDefault wave3d :
    GP.plotDefault lissajous3d :
    GP.plotDefault multiplot :
+   GP.plotDefault insetplot :
    []

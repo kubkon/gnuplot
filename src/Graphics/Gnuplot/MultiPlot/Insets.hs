@@ -1,8 +1,10 @@
-module Graphics.Gnuplot.EmbeddedMultiPlot (
+module Graphics.Gnuplot.MultiPlot.Insets (
   T,
   simpleFromFrameArray,
   simpleFromPartArray,
   title,
+  MultiPlot.partFromFrame,
+  MultiPlot.partFromPlot,
   ) where
 
 import qualified Graphics.Gnuplot.Private.Frame as Frame
@@ -46,21 +48,25 @@ title :: String -> T -> T
 title str mp =
     mp {title_ = Just str}
 
+showTuple :: Show a => (a,a) -> String
+showTuple (x,y) = show x ++ "," ++ show y
+
 instance Display.C T where
-    toScript mp =
-      mconcat $ (Display.pure $ Display.Body []
-                ["set multiplot" ++ foldMap ((" title " ++ ) . quote) (title_ mp)])
-              : (MultiPlot.scriptFromPart $ head $ parts_ mp)
-              : (Display.pure $ Display.Body []
-                ["set size " ++ show (size_ mp)])
-              : (zipWith (\o p -> mconcat
-                                $ (Display.pure $ Display.Body []
-                                  ["set origin " ++ show (fst o) ++ "," ++ show (snd o),
-                                   "clear"])
-                                : (MultiPlot.scriptFromPart p)
-                                : [])
-                (origins_ mp)
-                $ tail (parts_ mp))
-             ++ (Display.pure
-                $ Display.Body [] ["unset multiplot"])
-              : []
+    toScript mp = mconcat 
+                $ (Display.pure $ Display.Body []
+                  ["set multiplot" ++ foldMap ((" title " ++ ) . quote) (title_ mp)])
+                : (MultiPlot.scriptFromPart $ head $ parts_ mp)
+                : (Display.pure $ Display.Body []
+                  ["set size " ++ show (size_ mp)])
+                : (zipWith (\o p -> mconcat
+                                  $ (Display.pure $ Display.Body []
+                                    ["set origin " ++ showTuple o,
+                                     "clear"])
+                                  : (MultiPlot.scriptFromPart p)
+                                  : [])
+                    (origins_ mp)
+                  $ tail (parts_ mp))
+               ++ (Display.pure $ Display.Body []
+                  ["unset multiplot"])
+                : []
+
