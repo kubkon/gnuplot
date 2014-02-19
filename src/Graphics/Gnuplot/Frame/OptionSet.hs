@@ -41,6 +41,12 @@ module Graphics.Gnuplot.Frame.OptionSet (
 
    boxwidthRelative,
    boxwidthAbsolute,
+
+   tmargin,
+   bmargin,
+   lmargin,
+   rmargin,
+   margin,
    ) where
 
 
@@ -274,6 +280,25 @@ boxwidthAbsolute ::
    Double -> T graph -> T graph
 boxwidthAbsolute width =
    OptionSet.add Option.boxwidth [show width, "absolute"]
+
+tmargin :: Graph.C graph => Int -> T graph -> T graph
+tmargin x =
+   OptionSet.add (Option.tmargin "") [show x]
+
+bmargin :: Graph.C graph => Int -> T graph -> T graph
+bmargin x =
+   OptionSet.add (Option.bmargin "") [show x]
+
+lmargin :: Graph.C graph => Int -> T graph -> T graph
+lmargin x =
+   OptionSet.add (Option.lmargin "") [show x]
+
+rmargin :: Graph.C graph => Int -> T graph -> T graph
+rmargin x =
+   OptionSet.add (Option.rmargin "") [show x]
+
+margin :: Graph.C graph => Int -> T graph -> T graph
+margin x = tmargin x . bmargin x . lmargin x . rmargin x
 
 {-
 cornerToColor :: CornersToColor -> T (Graph3D.T x y z) -> T (Graph3D.T x y z)

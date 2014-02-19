@@ -41,11 +41,15 @@ if there is no specific setter function in "Graphics.Gnuplot.Frame.OptionSet".
 custom :: String -> String -> T
 custom = Cons
 
-grid   :: String -> T; grid   = Cons "grid"
-size   :: String -> T; size   = Cons "size"
-key    :: String -> T; key    = Cons "key"
-border :: String -> T; border = Cons "border"
-pm3d   :: String -> T; pm3d   = Cons "pm3d"
+grid    :: String -> T; grid    = Cons "grid"
+size    :: String -> T; size    = Cons "size"
+key     :: String -> T; key     = Cons "key"
+border  :: String -> T; border  = Cons "border"
+pm3d    :: String -> T; pm3d    = Cons "pm3d"
+tmargin :: String -> T; tmargin = Cons "tmargin"
+bmargin :: String -> T; bmargin = Cons "bmargin"
+lmargin :: String -> T; lmargin = Cons "lmargin"
+rmargin :: String -> T; rmargin = Cons "rmargin"
 
 xRange :: String -> T; xRange = Cons "xrange"
 yRange :: String -> T; yRange = Cons "yrange"
